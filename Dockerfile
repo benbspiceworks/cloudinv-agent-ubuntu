@@ -1,13 +1,11 @@
 FROM ubuntu
 ENV TERM linux
+ENV TZ America/Chicago
 ARG DOWNLOAD_URL
 ARG SITE_KEY
 
 RUN apt-get -qq update; \
 apt-get install -y mono-complete curl dialog apt-utils tzdata
-
-RUN echo "America/Chicago"  tee /etc/timezone; \
-dpkg-reconfigure --frontend noninteractive tzdata
 
 RUN curl -k -o /tmp/agent.deb $DOWNLOAD_URL
 
