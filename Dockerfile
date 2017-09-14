@@ -14,6 +14,7 @@ RUN curl -k -o /tmp/agent.deb $DOWNLOAD_URL; \
 SITE_KEY=$SITE_KEY TROUBLESHOOTING_HOST="https://api-staging.spiceworks.com/agent-registrar" apt install /tmp/agent.deb; \
 rm /tmp/agent.deb;
 
-ENTRYPOINT service agent_shell_service stop && service agent_shell_service start && bash;
+#bounce agent service
+ENTRYPOINT /etc/init.d/agent_shell_service stop && /etc/init.d/agent_shell_service start && tail -F /opt/SpiceworksAgentShell/logs/spiceworks_agent.log;
 
 HEALTHCHECK CMD if [[ $(ps -ef | grep -c AgentShellService.exe)  -ne 1 ]]; then echo 1; else echo 0; fi
