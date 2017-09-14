@@ -4,6 +4,10 @@
 `docker build -t cloudinv-agent-ubuntu ~/path/to/Dockerfile --build-arg DOWNLOAD_URL=https://path/to/.deb --build-arg SITE_KEY=actualKey
 `
 
+Example URL for the stable public repo/build:
+
+`DOWNLOAD_URL=https://spiceworks.jfrog.io/spiceworks/deb-public/pool/spiceworks-agentshell-cloud-inventory_0.3.16_all.deb`
+
 ## List images 
 `docker images`
 
